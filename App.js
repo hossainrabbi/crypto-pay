@@ -4,6 +4,7 @@ import { useFonts } from "expo-font";
 import Home from "./src/screens/Home";
 import SignIn from "./src/screens/SignIn";
 import Signup from "./src/screens/Signup";
+import TodoList from "./src/screens/TodoList";
 import { colors } from "./src/themes/colors";
 
 const Stack = createNativeStackNavigator();
@@ -13,6 +14,8 @@ export default function App() {
     "Inter-Bold": require("./assets/fonts/Inter-Bold.ttf"),
     "Inter-Regular": require("./assets/fonts/Inter-Regular.ttf"),
   });
+
+  const auth = false;
 
   if (!fontsLoaded) {
     return null;
@@ -30,8 +33,14 @@ export default function App() {
     <NavigationContainer theme={customTheme}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Signup" component={Signup} />
-        <Stack.Screen name="SignIn" component={SignIn} />
+        {auth ? (
+          <Stack.Screen name="TodoList" component={TodoList} />
+        ) : (
+          <>
+            <Stack.Screen name="SignIn" component={SignIn} />
+            <Stack.Screen name="Signup" component={Signup} />
+          </>
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   );

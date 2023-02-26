@@ -1,16 +1,21 @@
 import React from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Button from "../components/Button";
 import Text from "../components/Text";
+import Banner from "../svg/Banner";
+import { colors } from "../themes/colors";
 import { spacing } from "../themes/spacing";
 
-export default function Home() {
+export default function Home({ navigation }) {
+  const auth = false;
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.imageContainer}>
-        <Image
-          source={require("../../assets/images/banner.svg")}
+        <Banner
+          color={colors.sky}
+          bitcoinColor={colors.golden}
+          bitcoinBorder={colors.orange}
           style={styles.bannerImage}
         />
       </View>
@@ -23,7 +28,12 @@ export default function Home() {
           Cryptocurrencies impede the traceability of transacting making them a
           favorite
         </Text>
-        <Button rounded>Get Started</Button>
+        <Button
+          rounded
+          onPress={() => navigation.navigate(auth ? "TodoList" : "SignIn")}
+        >
+          Get Started
+        </Button>
       </View>
     </SafeAreaView>
   );
@@ -36,7 +46,7 @@ const styles = StyleSheet.create({
   },
   bannerImage: {
     width: "100%",
-    height: 250,
+    height: 350,
     resizeMode: "cover",
   },
   contentContainer: {

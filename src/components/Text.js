@@ -11,13 +11,13 @@ export default function Text({ children, style, preset = "default" }) {
 
 const BASE = {
   color: colors.gray,
-  fontSize: 14,
+  fontSize: 15,
   fontFamily: typography.primary,
 };
 
 const BASE_Bold = {
   color: colors.black,
-  fontSize: 14,
+  fontSize: 15,
   fontFamily: typography.primaryBold,
 };
 
