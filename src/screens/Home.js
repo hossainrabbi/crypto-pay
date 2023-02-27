@@ -10,7 +10,7 @@ import { spacing } from "../themes/spacing";
 export default function Home({ navigation }) {
   const auth = false;
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, paddingHorizontal: spacing[4] }}>
       <View style={styles.imageContainer}>
         <Banner
           color={colors.sky}
@@ -50,7 +50,6 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   contentContainer: {
-    paddingHorizontal: spacing[4],
     flex: 1,
     justifyContent: "flex-end",
     marginVertical: spacing[8],
